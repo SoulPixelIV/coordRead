@@ -1,0 +1,33 @@
+************************************
+***********  NAMELIST **************
+************************************
+       ModelName :       bcc-csm2-mr_ssp585_r1i1p1f1_2055                  
+       InputPath:        /work/bm1159/XCES/xces-work/b324056/evaluation_system/cache/wtrack/cmip6_multimodel/925639/ssp585/ssp585/r1i1p1f1/
+      Minarea:            150000
+       Minpers:                1
+       Mindur:                 4
+       Max. transl. dist: 600.00
+ Factor of max. int. relocation:0.50
+       Startyear:           2055
+       Endyear:             2055
+       Tsteps:               728
+       Londim:               320
+       Latdim:                62
+       WRITEGridFile:          0
+       InnerBoxWest:        0.00
+       InnerBoxEast:      360.00
+       InnerBoxSouth:      30.00
+       InnerBoxNorth:      90.00
+       Outputpath:       /work/bm1159/XCES/xces-work/b324056/evaluation_system/output/wtrack/cmip6_multimodel/925639/wtrack_out/cmip6/bcc-csm2-mr/ssp585/WIND_EVENT/r1i1p1f1/
+       Perc_File_Low:    /work/bm1159/XCES/xces-work/b324056/evaluation_system/cache/wtrack/cmip6_multimodel/925639/PERCENTILE//perc_file_low.srv
+       Perc_File_High:   /work/bm1159/XCES/xces-work/b324056/evaluation_system/cache/wtrack/cmip6_multimodel/925639/PERCENTILE//perc_file_high.srv
+       LSM_File:         /work/bm1159/XCES/xces-work/b324056/evaluation_system/cache/wtrack/cmip6_multimodel/925639/ssp585/regions_mask.srv
+       Longitude_File:   /work/bm1159/XCES/xces-work/b324056/evaluation_system/cache/wtrack/cmip6_multimodel/925639/ssp585/bcc-csm2-mr_longitude
+       Latitude_File:    /work/bm1159/XCES/xces-work/b324056/evaluation_system/cache/wtrack/cmip6_multimodel/925639/ssp585/bcc-csm2-mr_latitude
+       Wind_File:        /work/bm1159/XCES/xces-work/b324056/evaluation_system/cache/wtrack/cmip6_multimodel/925639/ssp585/ssp585/r1i1p1f1//wind_2055-2056.nc.srv
+       MaxClusters:       200000
+       MaxEvents:          20000
+       MaxLength:           1000
+       GridType:         dummy                                             
+       regional SSIs           0
+************************************

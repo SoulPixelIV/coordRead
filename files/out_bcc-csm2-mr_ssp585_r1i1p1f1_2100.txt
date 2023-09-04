@@ -1,0 +1,6 @@
++ PATH=/work/bm1159/XCES/plugins/wtrack/plugin_env/bin:/home/b/b380001/freva/bin:/home/b/b380001/freva/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sw/centos58-x64/cdo-1.5.4/bin/:/sw/centos58-x64/cdo-1.5.4/bin
++ export PATH
++ wind_file=/work/bm1159/XCES/xces-work/b324056/evaluation_system/cache/wtrack/cmip6_multimodel/925639/ssp585/ssp585/r1i1p1f1//wind_2100-2101.nc.srv
++ cdo -s -f srv seldate,2100-10-01,2101-03-31 /work/bm1159/XCES/xces-work/b324056/evaluation_system/cache/wtrack/cmip6_multimodel/925639/ssp585/ssp585/r1i1p1f1//wind_2100-2101.nc /work/bm1159/XCES/xces-work/b324056/evaluation_system/cache/wtrack/cmip6_multimodel/925639/ssp585/ssp585/r1i1p1f1//wind_2100-2101.nc.srv
+cdo    seldate: Open failed on >/work/bm1159/XCES/xces-work/b324056/evaluation_system/cache/wtrack/cmip6_multimodel/925639/ssp585/ssp585/r1i1p1f1//wind_2100-2101.nc<
+                No such file or directory

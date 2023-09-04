@@ -1,0 +1,98 @@
++ PATH=/work/bm1159/XCES/plugins/wtrack/plugin_env/bin:/home/b/b380001/freva/bin:/home/b/b380001/freva/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin:/sw/centos58-x64/cdo-1.5.4/bin/:/sw/centos58-x64/cdo-1.5.4/bin
++ export PATH
++ wind_file=/work/bm1159/XCES/xces-work/b324056/evaluation_system/cache/wtrack/cmip6_multimodel/925639/ssp585/ssp585/r1i1p1f1//wind_2023-2024.nc.srv
++ cdo -s -f srv seldate,2023-10-01,2024-03-31 /work/bm1159/XCES/xces-work/b324056/evaluation_system/cache/wtrack/cmip6_multimodel/925639/ssp585/ssp585/r1i1p1f1//wind_2023-2024.nc /work/bm1159/XCES/xces-work/b324056/evaluation_system/cache/wtrack/cmip6_multimodel/925639/ssp585/ssp585/r1i1p1f1//wind_2023-2024.nc.srv
++ cdo -s ntime /work/bm1159/XCES/xces-work/b324056/evaluation_system/cache/wtrack/cmip6_multimodel/925639/ssp585/ssp585/r1i1p1f1//wind_2023-2024.nc.srv
++ tsteps=728
++ year=2023
++ cat
++ 1> /work/bm1159/XCES/xces-work/b324056/evaluation_system/output/wtrack/cmip6_multimodel/925639/wtrack_out/cmip6/bcc-csm2-mr/ssp585/CONFIG//script/inputlist_bcc-csm2-mr_ssp585_r1i1p1f1_2023 0<< \EOF
+&input
+model='bcc-csm2-mr_ssp585_r1i1p1f1_2023'
+londim=320
+latdim=62
+tsteps=728
+minarea=150000
+minpers=1
+mindur=4
+max_translatdist=600
+max_internrelocfac=0.5
+startyear=2023
+endyear=2023
+writegridfile=0
+innerbox_west=0.
+innerbox_east=360.
+innerbox_south=30.
+innerbox_north=90.
+outputpath='/work/bm1159/XCES/xces-work/b324056/evaluation_system/output/wtrack/cmip6_multimodel/925639/wtrack_out/cmip6/bcc-csm2-mr/ssp585/WIND_EVENT/r1i1p1f1/'
+perc_file_low='/work/bm1159/XCES/xces-work/b324056/evaluation_system/cache/wtrack/cmip6_multimodel/925639/PERCENTILE//perc_file_low.srv'
+perc_file_high='/work/bm1159/XCES/xces-work/b324056/evaluation_system/cache/wtrack/cmip6_multimodel/925639/PERCENTILE//perc_file_high.srv'
+lsm_file='/work/bm1159/XCES/xces-work/b324056/evaluation_system/cache/wtrack/cmip6_multimodel/925639/ssp585/regions_mask.srv'
+latitude_file='/work/bm1159/XCES/xces-work/b324056/evaluation_system/cache/wtrack/cmip6_multimodel/925639/ssp585/bcc-csm2-mr_latitude'
+longitude_file='/work/bm1159/XCES/xces-work/b324056/evaluation_system/cache/wtrack/cmip6_multimodel/925639/ssp585/bcc-csm2-mr_longitude'
+wind_file='/work/bm1159/XCES/xces-work/b324056/evaluation_system/cache/wtrack/cmip6_multimodel/925639/ssp585/ssp585/r1i1p1f1//wind_2023-2024.nc.srv'
+maxclust=200000
+maxevents=20000
+gridtype='dummy'
+nregions=0
+inputpath='/work/bm1159/XCES/xces-work/b324056/evaluation_system/cache/wtrack/cmip6_multimodel/925639/ssp585/ssp585/r1i1p1f1/'
+maxlength=1000
+&end
+EOF
++ nice -n 0 /work/bm1159/XCES/plugins/wtrack/bin/wtrack.exe /work/bm1159/XCES/xces-work/b324056/evaluation_system/output/wtrack/cmip6_multimodel/925639/wtrack_out/cmip6/bcc-csm2-mr/ssp585/CONFIG//script/inputlist_bcc-csm2-mr_ssp585_r1i1p1f1_2023
+ #   NAMELIST_READ
+ ModelName :       bcc-csm2-mr_ssp585_r1i1p1f1_2023
+ Minarea:                 150000
+ Minpers:                     1
+ Mindur:                      4
+ Max. transl. dist:   600.000000    
+ Factor of max. intern. reloc.:  0.500000000    
+ Startyear:                2023
+ Endyear:                  2023
+ Tsteps:                    728
+ Londim:                    320
+ Latdim:                     62
+ WRITEGridFile:               0
+ InnerBoxWest:        0.00000000    
+ InnerBoxEast:        360.000000    
+ InnerBoxSouth:       30.0000000    
+ InnerBoxNorth:       90.0000000    
+ Outputpath:       /work/bm1159/XCES/xces-work/b324056/evaluation_system/output/wtrack/cmip6_multimodel/925639/wtrack_out/cmip6/bcc-csm2-mr/ssp585/WIND_EVENT/r1i1p1f1/
+ Perc_File_Low:    /work/bm1159/XCES/xces-work/b324056/evaluation_system/cache/wtrack/cmip6_multimodel/925639/PERCENTILE//perc_file_low.srv
+ Perc_File_High:   /work/bm1159/XCES/xces-work/b324056/evaluation_system/cache/wtrack/cmip6_multimodel/925639/PERCENTILE//perc_file_high.srv
+ LSM_File:         /work/bm1159/XCES/xces-work/b324056/evaluation_system/cache/wtrack/cmip6_multimodel/925639/ssp585/regions_mask.srv
+ Longitude_File:   /work/bm1159/XCES/xces-work/b324056/evaluation_system/cache/wtrack/cmip6_multimodel/925639/ssp585/bcc-csm2-mr_longitude
+ Latitude_File:    /work/bm1159/XCES/xces-work/b324056/evaluation_system/cache/wtrack/cmip6_multimodel/925639/ssp585/bcc-csm2-mr_latitude
+ Wind_File:        /work/bm1159/XCES/xces-work/b324056/evaluation_system/cache/wtrack/cmip6_multimodel/925639/ssp585/ssp585/r1i1p1f1//wind_2023-2024.nc.srv
+ MaxClusters:            200000
+ MaxEvents:               20000
+ MaxLength:                1000
+ GridType:         dummy                                             
+ regional SSIs                0
+ =====================================
+ #   READ_PERCENTILE_LOW
+ NLAT,NLON:          62         320
+ #   READ_PERCENTILE_HIGH
+ NLAT,NLON:          62         320
+ globalgrid:           1  polargrid:           2
+ #   READ_LSM
+ #   CLUSTER_IDENTIFICATION
+ #   SIZE_FILTER
+ #   TRACKING_NEAREST_NEIGHBOUR
+ forward search for connections:
+  total number of clusters:                                5208
+    connected to cluster in next ts because of distance:   3263
+    connected to cluster in next ts because of size:         53
+   not connected:                                          1892
+ track construction:
+  total number of mergers:         159
+    decided because of distance:   117
+    decided because of size:        36
+    decided because of length:       5
+    decided because of overlap:      1
+ #   WRITE_EVENT_PROP
+ #           2051 events found,         391 events selected
+
+real	1m35.85s
+user	1m35.04s
+sys	0m0.27s

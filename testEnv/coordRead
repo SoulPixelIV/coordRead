@@ -1,0 +1,43 @@
+stringText = ''
+testEvent = "201500002"
+lon = 0
+lat = 0
+
+#Open File
+with open('testCoord.txt', 'r') as f:
+    lines = f.readlines()
+
+#Remove first 2 Lines
+del lines[0]
+del lines[0]
+
+#Replace Spaces
+lines = [line.replace(' ', ',') for line in lines]
+
+for x in lines:
+    stringText += x
+
+#Split String
+stringTextSplit = stringText.split(',')
+
+#Filter String
+def removeEmptyStrings(element):
+    if element == '':
+        return False
+    
+    return True
+
+filteredTextTemp = filter(removeEmptyStrings, stringTextSplit)
+filteredText = list(filteredTextTemp)
+
+#Get Lon,Lat from specific Event
+if filteredText[1] == testEvent:
+    lon = filteredText[16]
+    lat = filteredText[17]
+
+#Print Solution
+print("Lon Value:", lon, "Lat Value:", lat)
+
+#Write File
+#with open('testCoord.txt', 'w') as f:
+#    f.writelines(lines)
