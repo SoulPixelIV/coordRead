@@ -1,16 +1,11 @@
 import re
 
 stringText = ''
-testEvent = "201500002"
-lon = 0
-lon2 = 0
-lon3 = 0
-lon4 = 0
-
-lat = 0
-lat2 = 0
-lat3 = 0
-lat4 = 0
+testEvent = "201501899"
+eventLength = 0
+currEventSpace = 0
+lonVals = [0] * 100
+latVals = [0] * 100
 
 #Open File
 with open('testCoord.txt', 'r') as f:
@@ -35,6 +30,11 @@ def removeEmptyStrings(element):
         return False
     
     return True
+def removeZero(element):
+    if element == 0:
+        return False
+    
+    return True
 
 filteredTextTemp = filter(removeEmptyStrings, stringTextSplit)
 filteredText = list(filteredTextTemp)
@@ -43,21 +43,29 @@ filteredText = list(filteredTextTemp)
 for i in range(len(filteredText)):
     if filteredText[i] == "Event:":
         if filteredText[i+1] == testEvent:
+            currEventSpace = i+1
+            eventLength = int(filteredText[i+5])
             break
     if i == len(filteredText) - 1:
         print("Event Nummer wurde nicht gefunden.")
         quit()
     
 
-if filteredText[1] == testEvent:
-    lon = filteredText[16] #+17
-    lat = filteredText[17]
-    lon2 = filteredText[33]
-    loat2 = filteredText[34]
+tickIndex = currEventSpace + 15
+if filteredText[currEventSpace] == testEvent:
+    for x in range(eventLength):
+        lonVals[x] = filteredText[tickIndex]
+        latVals[x] = filteredText[tickIndex+1]
+        tickIndex += 17
+
+#Filter empty array elements
+lonValsFiltered = filter(removeZero, lonVals)
+lonValsFilteredList = list(lonValsFiltered)
+latValsFiltered = filter(removeZero, latVals)
+latValsFilteredList = list(latValsFiltered)
 
 #Print Solution
-print("Lon Value:", lon, "Lat Value:", lat, "Lon2 Value:", lon2, "Lat2 Value:", lat2)
-print(filteredText)
+print("Lon Values:", lonValsFilteredList, "Lat Values:", latValsFilteredList)
 
 #Write File
 #with open('testCoord.txt', 'w') as f:

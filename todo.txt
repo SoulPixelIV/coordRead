@@ -11,7 +11,6 @@ rote linie plotten (WTRACK plugin)
 
 output pfad im terminal folgen (event_track dateien)
 anhand eventnummer rote linie zeichnen
-python csv konforme sachen einlesen
 LON LAT Values plotten
 
 Bei Person im Vertrag melden (Terminvereinbarung - Vertragsunterschrift)
