@@ -1,7 +1,16 @@
+import re
+
 stringText = ''
 testEvent = "201500002"
 lon = 0
+lon2 = 0
+lon3 = 0
+lon4 = 0
+
 lat = 0
+lat2 = 0
+lat3 = 0
+lat4 = 0
 
 #Open File
 with open('testCoord.txt', 'r') as f:
@@ -18,7 +27,7 @@ for x in lines:
     stringText += x
 
 #Split String
-stringTextSplit = stringText.split(',')
+stringTextSplit = re.split(r',|\n', stringText)
 
 #Filter String
 def removeEmptyStrings(element):
@@ -31,12 +40,24 @@ filteredTextTemp = filter(removeEmptyStrings, stringTextSplit)
 filteredText = list(filteredTextTemp)
 
 #Get Lon,Lat from specific Event
+for i in range(len(filteredText)):
+    if filteredText[i] == "Event:":
+        if filteredText[i+1] == testEvent:
+            break
+    if i == len(filteredText) - 1:
+        print("Event Nummer wurde nicht gefunden.")
+        quit()
+    
+
 if filteredText[1] == testEvent:
-    lon = filteredText[16]
+    lon = filteredText[16] #+17
     lat = filteredText[17]
+    lon2 = filteredText[33]
+    loat2 = filteredText[34]
 
 #Print Solution
-print("Lon Value:", lon, "Lat Value:", lat)
+print("Lon Value:", lon, "Lat Value:", lat, "Lon2 Value:", lon2, "Lat2 Value:", lat2)
+print(filteredText)
 
 #Write File
 #with open('testCoord.txt', 'w') as f:
