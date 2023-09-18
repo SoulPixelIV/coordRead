@@ -1,0 +1,36 @@
+(ssh): ssh <nutzer>@levante.dkrz.de
+nutzername: b382525
+pfad: /work/bm1159/XCES/xces-work
+
+-- Freva öfter Probleme
+
+Freva im Terminal nutzen
+TestPlugin über Terminal einbinden
+
+rote linie plotten (WTRACK plugin)
+
+output pfad im terminal folgen (event_track dateien)
+anhand eventnummer rote linie zeichnen
+python csv konforme sachen einlesen
+LON LAT Values plotten
+
+Bei Person im Vertrag melden (Terminvereinbarung - Vertragsunterschrift)
+-------------------------------------------------------------------------------------------
+
+eigene scheme css datei anlegen mit eigenen variablen (alle alten variablen kopieren)
+-> damit man am ende zwischen ingo schema und william schema wechseln kann
+alte bilder zurücksetzen, neue bilder mit neuen namen
+start.py entscheidet welches schema genutzt wird
+farben lieber rgba statt rgb
+
+neuer abschnitt auf website
+eigene tutorials in eigener pdf
+tutorial grob an übung1 angelehnt (Einführung in Python, Wie schreibt man ein Python Programm?, Wie führe ich das aus?, Jupyter Notebook erklären)
+vllt beispiel links zu hilfsseiten
+
+-------------------------------------------------------------------------------------------
+strg + f5 und nicht nur f5
+viereck mit normalen kategorien ersetzen (übersichtlicher)
+
+deine version aufrufen: https://poincare.met.fu-berlin.de/~djalaw99/dalab/webgui/start.py
+
