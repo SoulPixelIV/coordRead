@@ -12,6 +12,10 @@ rote linie plotten (WTRACK plugin)
 output pfad im terminal folgen (event_track dateien)
 anhand eventnummer rote linie zeichnen
 LON LAT Values plotten
+cartopy, geopandas
+https://kanoki.org/python-plotting-latitude-and-longitude-from-csv-on-map-using-basemap-folium-geopandas-and-plotly
+
+lon koordinate beachten, könnte Probleme beim Umrechnen machen (Klassische Umrechnungsfunktion)
 
 Bei Person im Vertrag melden (Terminvereinbarung - Vertragsunterschrift)
 -------------------------------------------------------------------------------------------
@@ -27,9 +31,15 @@ eigene tutorials in eigener pdf
 tutorial grob an übung1 angelehnt (Einführung in Python, Wie schreibt man ein Python Programm?, Wie führe ich das aus?, Jupyter Notebook erklären)
 vllt beispiel links zu hilfsseiten
 
+hinweis auf uni pcs alles schon vorbereitet
+email entfernen -> auf website verweisen
+notebook (python version abfragen, code editoren überprüfen)
+notebook mit bash kernel
+
+main funktion erstellen
+re.sub.('\s',' ',ll) Um mehrere leerzeichen zu einem zu machen
+
 -------------------------------------------------------------------------------------------
-strg + f5 und nicht nur f5
-viereck mit normalen kategorien ersetzen (übersichtlicher)
 
 deine version aufrufen: https://poincare.met.fu-berlin.de/~djalaw99/dalab/webgui/start.py
 

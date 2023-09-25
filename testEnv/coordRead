@@ -1,7 +1,7 @@
 import re
 
 stringText = ''
-testEvent = "201501899"
+testEvent = "201500215"
 eventLength = 0
 currEventSpace = 0
 lonVals = [0] * 100
