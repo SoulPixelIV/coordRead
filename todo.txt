@@ -2,18 +2,7 @@
 nutzername: b382525
 pfad: /work/bm1159/XCES/xces-work
 
--- Freva öfter Probleme
-
-Freva im Terminal nutzen
-TestPlugin über Terminal einbinden
-
 rote linie plotten (WTRACK plugin)
-
-output pfad im terminal folgen (event_track dateien)
-anhand eventnummer rote linie zeichnen
-LON LAT Values plotten
-cartopy, geopandas
-https://kanoki.org/python-plotting-latitude-and-longitude-from-csv-on-map-using-basemap-folium-geopandas-and-plotly
 
 lon koordinate beachten, könnte Probleme beim Umrechnen machen (Klassische Umrechnungsfunktion)
 

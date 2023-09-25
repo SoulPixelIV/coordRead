@@ -1,7 +1,9 @@
 import re
+from mpl_toolkits.basemap import Basemap
+import matplotlib.pyplot as plt
 
 stringText = ''
-testEvent = "201500215"
+testEvent = "201500830"
 eventLength = 0
 currEventSpace = 0
 lonVals = [0] * 100
@@ -66,6 +68,26 @@ latValsFilteredList = list(latValsFiltered)
 
 #Print Solution
 print("Lon Values:", lonValsFilteredList, "Lat Values:", latValsFilteredList)
+
+#Convert to float
+for i in range(0, len(lonValsFilteredList)):
+    lonValsFilteredList[i] = float(lonValsFilteredList[i])
+
+for i in range(0, len(latValsFilteredList)):
+    latValsFilteredList[i] = float(latValsFilteredList[i])
+
+#Plot Result
+fig = plt.figure(figsize=(12,9))
+m = Basemap(projection = 'mill', llcrnrlat = -90, urcrnrlat = 90, llcrnrlon = -180, urcrnrlon = 180, resolution = 'c')
+
+# drawing the coastline
+m.drawcoastlines()
+m.drawcountries(color='gray')
+m.drawstates(color='gray')
+
+# plotting the map
+m.scatter(lonValsFilteredList, latValsFilteredList, latlon = True, s = 50, c = 'red', marker = 'X', alpha = 1)
+plt.show()
 
 #Write File
 #with open('testCoord.txt', 'w') as f:
