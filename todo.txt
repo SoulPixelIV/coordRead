@@ -20,10 +20,12 @@ eigene tutorials in eigener pdf
 tutorial grob an übung1 angelehnt (Einführung in Python, Wie schreibt man ein Python Programm?, Wie führe ich das aus?, Jupyter Notebook erklären)
 vllt beispiel links zu hilfsseiten
 
-hinweis auf uni pcs alles schon vorbereitet
-email entfernen -> auf website verweisen
 notebook (python version abfragen, code editoren überprüfen)
 notebook mit bash kernel
+
+neu mit notebooks und anaconda
+herausgefunden wie man bash notebook erstellt
+aber noch probleme
 
 main funktion erstellen
 re.sub.('\s',' ',ll) Um mehrere leerzeichen zu einem zu machen
