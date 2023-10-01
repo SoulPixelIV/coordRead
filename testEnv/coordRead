@@ -3,7 +3,7 @@ from mpl_toolkits.basemap import Basemap
 import matplotlib.pyplot as plt
 
 stringText = ''
-testEvent = "201500830"
+testEvent = "201501557"
 eventLength = 0
 currEventSpace = 0
 lonVals = [0] * 100
