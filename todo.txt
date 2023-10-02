@@ -1,12 +1,6 @@
 (ssh): ssh <nutzer>@levante.dkrz.de
 nutzername: b382525
 pfad: /work/bm1159/XCES/xces-work
-
-rote linie plotten (WTRACK plugin)
-
-lon koordinate beachten, könnte Probleme beim Umrechnen machen (Klassische Umrechnungsfunktion)
-
-Bei Person im Vertrag melden (Terminvereinbarung - Vertragsunterschrift)
 -------------------------------------------------------------------------------------------
 
 eigene scheme css datei anlegen mit eigenen variablen (alle alten variablen kopieren)
@@ -15,25 +9,10 @@ alte bilder zurücksetzen, neue bilder mit neuen namen
 start.py entscheidet welches schema genutzt wird
 farben lieber rgba statt rgb
 
-neuer abschnitt auf website
-eigene tutorials in eigener pdf
-tutorial grob an übung1 angelehnt (Einführung in Python, Wie schreibt man ein Python Programm?, Wie führe ich das aus?, Jupyter Notebook erklären)
-vllt beispiel links zu hilfsseiten
+pdf & notebook in raum_04 reintun
+apropros funktion funktioniert nicht
 
-notebook (python version abfragen(python --version), code editoren überprüfen(apropros editor))
-notebook mit bash kernel
-
-main funktion erstellen
-re.sub.('\s',' ',ll) Um mehrere leerzeichen zu einem zu machen
-
-pdf in raum_04 reintun
-auf poincare jupyter nutzen (Anleitung auf dalab)
-
-vielleicht auf cartopy upgraden?
-rote punkte verbinden
-immer einen plotpunkt markieren
 zB. mit pfeiltasten langbewegen
-immer merken welcher plotschritt gerade markiert ist
 
 -------------------------------------------------------------------------------------------
 

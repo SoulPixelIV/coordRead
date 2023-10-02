@@ -114,7 +114,7 @@ while True:
     test1 += 1
     test2 += 1
     print(test1)
-    time.sleep(1)
+    time.sleep(7)
     plt.close()
 
 #Write File
