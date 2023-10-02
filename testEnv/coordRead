@@ -1,16 +1,17 @@
 import re
 from mpl_toolkits.basemap import Basemap
 import matplotlib.pyplot as plt
-import pandas as pd
-import geopandas as gpd
-from shapely.geometry import Point, Polygon
+import time
 
 stringText = ''
 testEvent = "201500979" #gute testnummer: 201500917
 eventLength = 0
 currEventSpace = 0
+selectedPlot = [0, 0]
 lonVals = [0] * 100
 latVals = [0] * 100
+test1 = 0
+test2 = 0
 
 #Open File
 with open('testCoord.txt', 'r') as f:
@@ -69,9 +70,6 @@ lonValsFilteredList = list(lonValsFiltered)
 latValsFiltered = filter(removeZero, latVals)
 latValsFilteredList = list(latValsFiltered)
 
-#Print Solution
-print("Lon Values:", lonValsFilteredList, "Lat Values:", latValsFilteredList)
-
 #Convert to float
 for i in range(0, len(lonValsFilteredList)):
     lonValsFilteredList[i] = float(lonValsFilteredList[i])
@@ -80,28 +78,44 @@ for i in range(0, len(latValsFilteredList)):
     latValsFilteredList[i] = float(latValsFilteredList[i])
 
 #Plot Result
-fig = plt.figure(figsize=(12,9))
-m = Basemap(projection = 'mill', llcrnrlat = -90, urcrnrlat = 90, llcrnrlon = -180, urcrnrlon = 180, resolution = 'c')
+def plotting():
+    fig = plt.figure(figsize=(12,9))
+    m = Basemap(projection = 'mill', llcrnrlat = -90, urcrnrlat = 90, llcrnrlon = -180, urcrnrlon = 180, resolution = 'c')
 
-# drawing the coastline
-m.drawcoastlines()
-m.drawcountries(color='gray')
-m.drawstates(color='gray')
+    # drawing the coastline
+    m.drawcoastlines()
+    m.drawcountries(color='gray')
+    m.drawstates(color='gray')
 
-# plotting the map
-m.scatter(lonValsFilteredList, latValsFilteredList, latlon = True, s = 50, c = 'red', marker = 'X', alpha = 1)
+    # plotting the map
+    m.scatter(lonValsFilteredList, latValsFilteredList, latlon = True, s = 50, c = 'red', marker = 'X', alpha = 1)
 
-# convert lon lat to correct values
-correctedLonValsFilteredList = lonValsFilteredList
-#correctedLatValsFilteredList = latValsFilteredList
-for i in range(len(correctedLonValsFilteredList)):
-    correctedLonValsFilteredList[i] = (correctedLonValsFilteredList[i] + 180) % 360 - 180
+    # convert lon lat to correct values
+    correctedLonValsFilteredList = lonValsFilteredList
+    #correctedLatValsFilteredList = latValsFilteredList
+    for i in range(len(correctedLonValsFilteredList)):
+        correctedLonValsFilteredList[i] = (correctedLonValsFilteredList[i] + 180) % 360 - 180
 
-x, y = m(correctedLonValsFilteredList, latValsFilteredList)
-m.plot(x, y, '-', color = 'red', markersize = 5, linewidth = 1.5)
+    x, y = m(correctedLonValsFilteredList, latValsFilteredList)
+    m.plot(x, y, '-', color = 'red', markersize = 5, linewidth = 1.5)
 
-m.scatter([5,4,10,8,20], [10,5,3,8,15], latlon = True, s = 500, c = 'green', marker = 'o', alpha = 0.6)
-plt.show()
+    selectedPlot[0] = correctedLonValsFilteredList[test1]
+    selectedPlot[1] = latValsFilteredList[test2]
+    m.scatter(selectedPlot[0], selectedPlot[1], latlon = True, s = 500, c = 'green', marker = 'o', alpha = 0.6)
+
+    plt.ion()
+    fig.canvas.draw()
+    fig.canvas.flush_events()
+    plt.show()
+
+#Main Loop
+while True:
+    plotting()
+    test1 += 1
+    test2 += 1
+    print(test1)
+    time.sleep(1)
+    plt.close()
 
 #Write File
 #with open('testCoord.txt', 'w') as f:
