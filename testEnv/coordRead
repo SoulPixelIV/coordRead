@@ -1,9 +1,12 @@
 import re
 from mpl_toolkits.basemap import Basemap
 import matplotlib.pyplot as plt
+import pandas as pd
+import geopandas as gpd
+from shapely.geometry import Point, Polygon
 
 stringText = ''
-testEvent = "201501557"
+testEvent = "201500979" #gute testnummer: 201500917
 eventLength = 0
 currEventSpace = 0
 lonVals = [0] * 100
@@ -87,6 +90,17 @@ m.drawstates(color='gray')
 
 # plotting the map
 m.scatter(lonValsFilteredList, latValsFilteredList, latlon = True, s = 50, c = 'red', marker = 'X', alpha = 1)
+
+# convert lon lat to correct values
+correctedLonValsFilteredList = lonValsFilteredList
+#correctedLatValsFilteredList = latValsFilteredList
+for i in range(len(correctedLonValsFilteredList)):
+    correctedLonValsFilteredList[i] = (correctedLonValsFilteredList[i] + 180) % 360 - 180
+
+x, y = m(correctedLonValsFilteredList, latValsFilteredList)
+m.plot(x, y, '-', color = 'red', markersize = 5, linewidth = 1.5)
+
+m.scatter([5,4,10,8,20], [10,5,3,8,15], latlon = True, s = 500, c = 'green', marker = 'o', alpha = 0.6)
 plt.show()
 
 #Write File
