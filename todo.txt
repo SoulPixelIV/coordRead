@@ -3,16 +3,16 @@ nutzername: b382525
 pfad: /work/bm1159/XCES/xces-work
 -------------------------------------------------------------------------------------------
 
-eigene scheme css datei anlegen mit eigenen variablen (alle alten variablen kopieren)
--> damit man am ende zwischen ingo schema und william schema wechseln kann
-alte bilder zurücksetzen, neue bilder mit neuen namen
-start.py entscheidet welches schema genutzt wird
-farben lieber rgba statt rgb
+JENS:
+	mit pfeiltasten marker langbewegen
+	jeweiliges event onscreen printen
+	karte vielleicht ranzoomen
 
-pdf & notebook in raum_04 reintun
-apropros funktion funktioniert nicht
+INGO:
+	raum04 übungen filenames nach themen benennen
+	pdf & notebook zu übung2 erstellen
 
-zB. mit pfeiltasten langbewegen
+rocketchat mit neuem account
 
 -------------------------------------------------------------------------------------------
 

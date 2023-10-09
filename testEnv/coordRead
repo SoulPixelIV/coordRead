@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import time
 
 stringText = ''
-testEvent = "201500979" #gute testnummer: 201500917
+testEvent = "201500074" #gute testnummer: 201500917
 eventLength = 0
 currEventSpace = 0
 selectedPlot = [0, 0]
@@ -114,7 +114,7 @@ while True:
     test1 += 1
     test2 += 1
     print(test1)
-    time.sleep(7)
+    time.sleep(15)
     plt.close()
 
 #Write File
