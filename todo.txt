@@ -4,7 +4,6 @@ pfad: /work/bm1159/XCES/xces-work
 -------------------------------------------------------------------------------------------
 
 JENS:
-	mit pfeiltasten marker langbewegen
 
 INGO:
 	raum04 übungen filenames nach themen benennen

@@ -1,7 +1,9 @@
 import re
 from mpl_toolkits.basemap import Basemap
 import matplotlib.pyplot as plt
+import matplotlib.animation
 import time
+import random
 
 stringText = ''
 testEvent = "201500019" #gute testnummer: 201500019
@@ -10,8 +12,7 @@ currEventSpace = 0
 selectedPlot = [0, 0]
 lonVals = [0] * 100
 latVals = [0] * 100
-test1 = 0
-test2 = 0
+miniTestCounter = 0
 
 #Open File
 with open('testCoord.txt', 'r') as f:
@@ -80,6 +81,7 @@ for i in range(0, len(latValsFilteredList)):
 #Plot Result
 def plotting():
     fig = plt.figure(figsize=(12,9))
+    currMarkerPoint = 0
     #m = Basemap(projection = 'mill', llcrnrlat = -90, urcrnrlat = 90, llcrnrlon = -180, urcrnrlon = 180, resolution = 'c')
     m = Basemap(projection = 'mill',
             llcrnrlat = latValsFilteredList[0] - 10,
@@ -88,42 +90,45 @@ def plotting():
             urcrnrlon = lonValsFilteredList[eventLength-1] + 18.75,
             resolution = 'i')
 
-    # drawing the coastline
-    m.drawcoastlines()
-    m.drawcountries(color='gray')
-    m.drawstates(color='gray')
-
-    # plotting the map
-    m.scatter(lonValsFilteredList, latValsFilteredList, latlon = True, s = 50, c = 'red', marker = 'X', alpha = 1)
-
     # convert lon lat to correct values
     correctedLonValsFilteredList = lonValsFilteredList
     #correctedLatValsFilteredList = latValsFilteredList
     for i in range(len(correctedLonValsFilteredList)):
         correctedLonValsFilteredList[i] = (correctedLonValsFilteredList[i] + 180) % 360 - 180
+    
+    #Animate
+    for k in range(1000):
+        plt.clf()
 
-    x, y = m(correctedLonValsFilteredList, latValsFilteredList)
-    m.plot(x, y, '-', color = 'red', markersize = 5, linewidth = 1.5)
+        # drawing the coastline
+        m.drawcoastlines()
+        m.drawcountries(color='gray')
+        m.drawstates(color='gray')
 
-    selectedPlot[0] = correctedLonValsFilteredList[test1]
-    selectedPlot[1] = latValsFilteredList[test2]
-    m.scatter(selectedPlot[0], selectedPlot[1], latlon = True, s = 500, c = 'green', marker = 'o', alpha = 0.6)
+        # plotting the map
+        m.scatter(lonValsFilteredList, latValsFilteredList, latlon = True, s = 50, c = 'red', marker = 'X', alpha = 1)
 
-    #plt.ion()
-    #fig.canvas.draw()
-    #fig.canvas.flush_events()
-    plt.annotate('Event: ' + testEvent, xy=(0, 1), xycoords='axes fraction')
+        # draw line
+        x, y = m(correctedLonValsFilteredList, latValsFilteredList)
+        m.plot(x, y, '-', color = 'red', markersize = 5, linewidth = 1.5)
+
+        plt.annotate('Event: ' + testEvent + '   ' + 'Marker Lon: ' + str(correctedLonValsFilteredList[currMarkerPoint]) + ' ' + 'Marker Lat: ' + str(latValsFilteredList[currMarkerPoint]), xy=(0, 1), xycoords='axes fraction')
+
+        selectedPlot[0] = correctedLonValsFilteredList[currMarkerPoint]
+        selectedPlot[1] = latValsFilteredList[currMarkerPoint]
+        currMarkerPoint += 1
+
+        if (currMarkerPoint > len(correctedLonValsFilteredList)-1):
+            currMarkerPoint = 0
+
+        # draw green marker
+        m.scatter(selectedPlot[0], selectedPlot[1], latlon = True, s = 500, c = 'green', marker = 'o', alpha = 0.6)
+        plt.waitforbuttonpress()
+
     plt.show()
 
+    
 plotting()
-#Main Loop
-#while True:
-    #plotting()
-    #test1 += 1
-    #test2 += 1
-    #print(test1)
-    #time.sleep(15)
-    #plt.close()
 
 #Write File
 #with open('testCoord.txt', 'w') as f:
