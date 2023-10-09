@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import time
 
 stringText = ''
-testEvent = "201500074" #gute testnummer: 201500917
+testEvent = "201500019" #gute testnummer: 201500019
 eventLength = 0
 currEventSpace = 0
 selectedPlot = [0, 0]
@@ -80,7 +80,13 @@ for i in range(0, len(latValsFilteredList)):
 #Plot Result
 def plotting():
     fig = plt.figure(figsize=(12,9))
-    m = Basemap(projection = 'mill', llcrnrlat = -90, urcrnrlat = 90, llcrnrlon = -180, urcrnrlon = 180, resolution = 'c')
+    #m = Basemap(projection = 'mill', llcrnrlat = -90, urcrnrlat = 90, llcrnrlon = -180, urcrnrlon = 180, resolution = 'c')
+    m = Basemap(projection = 'mill',
+            llcrnrlat = latValsFilteredList[0] - 10,
+            llcrnrlon = lonValsFilteredList[0] - 10,
+            urcrnrlat = latValsFilteredList[eventLength-1] + 12.5,
+            urcrnrlon = lonValsFilteredList[eventLength-1] + 18.75,
+            resolution = 'i')
 
     # drawing the coastline
     m.drawcoastlines()
@@ -103,19 +109,21 @@ def plotting():
     selectedPlot[1] = latValsFilteredList[test2]
     m.scatter(selectedPlot[0], selectedPlot[1], latlon = True, s = 500, c = 'green', marker = 'o', alpha = 0.6)
 
-    plt.ion()
-    fig.canvas.draw()
-    fig.canvas.flush_events()
+    #plt.ion()
+    #fig.canvas.draw()
+    #fig.canvas.flush_events()
+    plt.annotate('Event: ' + testEvent, xy=(0, 1), xycoords='axes fraction')
     plt.show()
 
+plotting()
 #Main Loop
-while True:
-    plotting()
-    test1 += 1
-    test2 += 1
-    print(test1)
-    time.sleep(15)
-    plt.close()
+#while True:
+    #plotting()
+    #test1 += 1
+    #test2 += 1
+    #print(test1)
+    #time.sleep(15)
+    #plt.close()
 
 #Write File
 #with open('testCoord.txt', 'w') as f:

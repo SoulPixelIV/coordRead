@@ -5,8 +5,6 @@ pfad: /work/bm1159/XCES/xces-work
 
 JENS:
 	mit pfeiltasten marker langbewegen
-	jeweiliges event onscreen printen
-	karte vielleicht ranzoomen
 
 INGO:
 	raum04 übungen filenames nach themen benennen
