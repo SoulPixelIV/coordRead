@@ -102,8 +102,10 @@ def plotting():
 
         # drawing the coastline
         m.drawcoastlines()
-        m.drawcountries(color='gray')
-        m.drawstates(color='gray')
+        m.drawcountries(color='black')
+        m.drawstates(color='black')
+        m.drawmapboundary(fill_color='aqua')
+        m.fillcontinents(color='coral', lake_color='aqua')
 
         # plotting the map
         m.scatter(lonValsFilteredList, latValsFilteredList, latlon = True, s = 50, c = 'red', marker = 'X', alpha = 1)

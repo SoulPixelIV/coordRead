@@ -4,10 +4,9 @@ pfad: /work/bm1159/XCES/xces-work
 -------------------------------------------------------------------------------------------
 
 JENS:
-
+	windkarte plotten
 INGO:
-	raum04 übungen filenames nach themen benennen
-	pdf & notebook zu übung2 erstellen
+	notebook zu übung3 erstellen
 
 rocketchat mit neuem account
 
@@ -17,4 +16,3 @@ deine version aufrufen: https://poincare.met.fu-berlin.de/~djalaw99/dalab/webgui
 gitlab: https://gitlab.met.fu-berlin.de/
 poincare: poincare.met.fu-berlin.de
 seite: https://dalab.klimod.de
-
