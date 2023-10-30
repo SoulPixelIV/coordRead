@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 import matplotlib.animation
 import time
 import random
+import numpy as np
+import xarray as xr
 
 stringText = ''
 testEvent = "201500019" #gute testnummer: 201500019
@@ -129,8 +131,21 @@ def plotting():
 
     plt.show()
 
+def readnc():
+    ds = xr.open_dataset('wind_2015-2016.nc')
+
+    windTimeVals = ds.wind.time.values
+    windLatVals = ds.wind.lat.values
+    windLonVals = ds.wind.lon.values
+
+    #Lat Lon für einen Zeitschritt
+    print(ds.wind.isel(time=0))
+    #zum testen
+    ds.wind.isel(time=0).plot()
+
     
-plotting()
+#plotting()
+readnc()
 
 #Write File
 #with open('testCoord.txt', 'w') as f:
