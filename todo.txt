@@ -5,18 +5,13 @@ levante.dkrz.de
 -------------------------------------------------------------------------------------------
 
 JENS:
-	lat wert kann für mehrere lons stehen
-	time lon lat plotten mit punkten
-	jeder zeitschritt enthält infos über alle positionen auf der erde
+	fehlen werte für teile der erde?
 
 	ds.wind.isel(time=0) selektiert einzelne werte (Funktion isel)
 	ds.wind.isel(time=0).plot() plot funktion
 
 	eventnummer ist zeitstempel für gewisses windfeld
 	sel funktion um nach bestimmten namen zu suchen
-
-	netcdf datei versuchen zu plotten -> generiert windfeld
-	windkarte plotten
 INGO:
 	notebook zu übung3 erstellen
 

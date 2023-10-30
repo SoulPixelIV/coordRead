@@ -86,10 +86,10 @@ def plotting():
     currMarkerPoint = 0
     #m = Basemap(projection = 'mill', llcrnrlat = -90, urcrnrlat = 90, llcrnrlon = -180, urcrnrlon = 180, resolution = 'c')
     m = Basemap(projection = 'mill',
-            llcrnrlat = latValsFilteredList[0] - 10,
-            llcrnrlon = lonValsFilteredList[0] - 10,
-            urcrnrlat = latValsFilteredList[eventLength-1] + 12.5,
-            urcrnrlon = lonValsFilteredList[eventLength-1] + 18.75,
+            llcrnrlat = latValsFilteredList[0] - 20,
+            llcrnrlon = lonValsFilteredList[0] - 20,
+            urcrnrlat = latValsFilteredList[eventLength-1] + 25,
+            urcrnrlon = lonValsFilteredList[eventLength-1] + 37.5,
             resolution = 'i')
 
     # convert lon lat to correct values
@@ -108,6 +108,19 @@ def plotting():
         m.drawstates(color='black')
         m.drawmapboundary(fill_color='aqua')
         m.fillcontinents(color='coral', lake_color='aqua')
+
+        # draw wind map
+        ds = xr.open_dataset('wind_2015-2016.nc')
+
+        windData = ds.variables['wind'][:]
+        windLats = ds.variables['lat'][:]
+        windLons = ds.variables['lon'][:]
+        windTimes = ds.variables['time'][:]
+
+        lon, lat = np.meshgrid(windLons, windLats)
+        windX, windY = m(lon, lat)
+        c_scheme = m.pcolor(windX, windY, np.squeeze(windData[currMarkerPoint, :, :]), cmap = 'jet')
+        cbar = m.colorbar(c_scheme, location = 'right', pad = '10%')
 
         # plotting the map
         m.scatter(lonValsFilteredList, latValsFilteredList, latlon = True, s = 50, c = 'red', marker = 'X', alpha = 1)
@@ -129,23 +142,15 @@ def plotting():
         m.scatter(selectedPlot[0], selectedPlot[1], latlon = True, s = 500, c = 'green', marker = 'o', alpha = 0.6)
         plt.waitforbuttonpress()
 
+        #Lat Lon für einen Zeitschritt
+        #print(ds.wind.isel(time=0))
+        #zum testen
+        #print(ds.variables.keys())
+        #ds.wind.isel(time=0).plot()
+
     plt.show()
-
-def readnc():
-    ds = xr.open_dataset('wind_2015-2016.nc')
-
-    windTimeVals = ds.wind.time.values
-    windLatVals = ds.wind.lat.values
-    windLonVals = ds.wind.lon.values
-
-    #Lat Lon für einen Zeitschritt
-    print(ds.wind.isel(time=0))
-    #zum testen
-    ds.wind.isel(time=0).plot()
-
     
-#plotting()
-readnc()
+plotting()
 
 #Write File
 #with open('testCoord.txt', 'w') as f:
