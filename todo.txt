@@ -14,9 +14,7 @@ JENS:
 	eventnummer ist zeitstempel für gewisses windfeld
 	sel funktion um nach bestimmten namen zu suchen
 INGO:
-	notebook zu übung3 erstellen
-
-rocketchat mit neuem account
+	notebook zu übung3 fertigstellen
 
 -------------------------------------------------------------------------------------------
 
