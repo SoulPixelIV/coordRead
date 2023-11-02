@@ -139,7 +139,7 @@ def plotting():
             currMarkerPoint = 0
 
         # draw green marker
-        m.scatter(selectedPlot[0], selectedPlot[1], latlon = True, s = 500, c = 'green', marker = 'o', alpha = 0.6)
+        m.scatter(selectedPlot[0], selectedPlot[1], latlon = True, s = 500, c = 'green', marker = 'o', alpha = 0.8)
         plt.waitforbuttonpress()
 
         #Lat Lon für einen Zeitschritt

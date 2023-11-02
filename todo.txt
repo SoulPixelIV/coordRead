@@ -5,7 +5,8 @@ levante.dkrz.de
 -------------------------------------------------------------------------------------------
 
 JENS:
-	fehlen werte für teile der erde?
+	daten von der welt sind vorhanden, cut sollte nicht so sein
+	zeitschritte korrekt mit windkarte anzeigen
 
 	ds.wind.isel(time=0) selektiert einzelne werte (Funktion isel)
 	ds.wind.isel(time=0).plot() plot funktion
