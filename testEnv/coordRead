@@ -92,7 +92,7 @@ def plotting():
             urcrnrlon = lonValsFilteredList[eventLength-1] + 37.5,
             resolution = 'i')
 
-    # convert lon lat to correct values
+    # convert lon to correct values
     correctedLonValsFilteredList = lonValsFilteredList
     #correctedLatValsFilteredList = latValsFilteredList
     for i in range(len(correctedLonValsFilteredList)):
@@ -116,6 +116,12 @@ def plotting():
         windLats = ds.variables['lat'][:]
         windLons = ds.variables['lon'][:]
         windTimes = ds.variables['time'][:]
+
+        windLonsLength = len(windLons)
+        for x in range(windLonsLength):
+            windLons.values[x] = (windLons.values[x] + 180) % 360 - 180
+        
+        windLons.values.sort()
 
         lon, lat = np.meshgrid(windLons, windLats)
         windX, windY = m(lon, lat)
