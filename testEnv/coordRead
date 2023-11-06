@@ -6,6 +6,7 @@ import time
 import random
 import numpy as np
 import xarray as xr
+import netcdf as nc
 
 stringText = ''
 testEvent = "201500019" #gute testnummer: 201500019
@@ -109,7 +110,7 @@ def plotting():
         m.drawmapboundary(fill_color='aqua')
         m.fillcontinents(color='coral', lake_color='aqua')
 
-        # draw wind map
+        #Draw wind map
         ds = xr.open_dataset('wind_2015-2016.nc')
 
         windData = ds.variables['wind'][:]
@@ -117,6 +118,15 @@ def plotting():
         windLons = ds.variables['lon'][:]
         windTimes = ds.variables['time'][:]
 
+        print(windTimes.values[0])
+
+        #Lat Lon für einen Zeitschritt
+        #print(ds.wind.isel(time=0))
+        #zum testen
+        #print(ds.variables.keys())
+        #ds.wind.isel(time=0).plot()
+
+        # correcting and sorting lon values for correct plotting
         windLonsLength = len(windLons)
         for x in range(windLonsLength):
             windLons.values[x] = (windLons.values[x] + 180) % 360 - 180
@@ -147,12 +157,6 @@ def plotting():
         # draw green marker
         m.scatter(selectedPlot[0], selectedPlot[1], latlon = True, s = 500, c = 'green', marker = 'o', alpha = 0.8)
         plt.waitforbuttonpress()
-
-        #Lat Lon für einen Zeitschritt
-        #print(ds.wind.isel(time=0))
-        #zum testen
-        #print(ds.variables.keys())
-        #ds.wind.isel(time=0).plot()
 
     plt.show()
     
