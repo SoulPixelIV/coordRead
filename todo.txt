@@ -5,9 +5,6 @@ levante.dkrz.de
 -------------------------------------------------------------------------------------------
 
 JENS:
-	- musste nur lon korrigieren und dann werte sortieren -
-	- wie erhält man die einzelnen Werte aus dem Datum -
-	- verwirrt mit sel und isel -
 	zeitschritte korrekt mit windkarte anzeigen
 
 	ds.wind.isel(time=0) selektiert einzelne werte (Funktion isel)
@@ -18,7 +15,12 @@ JENS:
 	
 	time -> 2015-01-01 00:00:00
 	
-	event -> 201500019
+	2015100100 YYYYMMDDHR
+	nummer einlesen und zerlegen
+	dann in object umwandeln
+	mit sel searchen
+
+	python datentyp datetime
 
 INGO:
 	notebook zu übung3 fertigstellen

@@ -6,7 +6,7 @@ import time
 import random
 import numpy as np
 import xarray as xr
-import netcdf as nc
+import netCDF4 as nc
 
 stringText = ''
 testEvent = "201500019" #gute testnummer: 201500019
@@ -118,7 +118,8 @@ def plotting():
         windLons = ds.variables['lon'][:]
         windTimes = ds.variables['time'][:]
 
-        print(windTimes.values[0])
+        #print(windTimes)
+        print(nc.date2num(windTimes, windTimes.units))
 
         #Lat Lon für einen Zeitschritt
         #print(ds.wind.isel(time=0))
