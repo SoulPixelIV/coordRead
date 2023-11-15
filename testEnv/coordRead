@@ -6,7 +6,9 @@ import time
 import random
 import numpy as np
 import xarray as xr
+import pandas as pd
 import netCDF4 as nc
+from datetime import datetime
 
 stringText = ''
 testEvent = "201500019" #gute testnummer: 201500019
@@ -111,33 +113,40 @@ def plotting():
         m.fillcontinents(color='coral', lake_color='aqua')
 
         #Draw wind map
-        ds = xr.open_dataset('wind_2015-2016.nc')
+        ds = xr.open_dataset(/home/b/b382525/'wind_2015-2016.nc') #path to .nc file on levante
+        ds.wind.isel(time=0).plot()
+
+######################### Experiments ##########################
+        #print(ds.wind[0].strftime("%Y"))
+        #print(pd.to_datetime("2015-01-01 12:00:00"))
+        #ds.wind.sel(time=pd.to_datetime("2015-01-01 12:00:00"), method="nearest").plot()
+#######################################################################
 
         windData = ds.variables['wind'][:]
         windLats = ds.variables['lat'][:]
         windLons = ds.variables['lon'][:]
-        windTimes = ds.variables['time'][:]
+        windTimes = ds.variables['time'][:]      
 
-        #print(windTimes)
-        print(nc.date2num(windTimes, windTimes.units))
+######################### Experiments ##########################
+        #trtime = "2015-01-01 00:00:00"
+        #print(windTimes.isel(time=0).strftime('%Y-%m-%d'))
+        #print(windTimes.sel(time=))
+#######################################################################
 
-        #Lat Lon für einen Zeitschritt
-        #print(ds.wind.isel(time=0))
-        #zum testen
-        #print(ds.variables.keys())
-        #ds.wind.isel(time=0).plot()
-
+########################## OLD PLOT CODE ###################################
+##################### Enable to show random wind map on earth ##############
         # correcting and sorting lon values for correct plotting
-        windLonsLength = len(windLons)
-        for x in range(windLonsLength):
-            windLons.values[x] = (windLons.values[x] + 180) % 360 - 180
+        #windLonsLength = len(windLons)
+        #for x in range(windLonsLength):
+            #windLons.values[x] = (windLons.values[x] + 180) % 360 - 180
         
-        windLons.values.sort()
+        #windLons.values.sort()
 
-        lon, lat = np.meshgrid(windLons, windLats)
-        windX, windY = m(lon, lat)
-        c_scheme = m.pcolor(windX, windY, np.squeeze(windData[currMarkerPoint, :, :]), cmap = 'jet')
-        cbar = m.colorbar(c_scheme, location = 'right', pad = '10%')
+        #lon, lat = np.meshgrid(windLons, windLats)
+        #windX, windY = m(lon, lat)
+        #c_scheme = m.pcolor(windX, windY, np.squeeze(windData[currMarkerPoint, :, :]), cmap = 'jet')
+        #cbar = m.colorbar(c_scheme, location = 'right', pad = '10%')
+############################################################################
 
         # plotting the map
         m.scatter(lonValsFilteredList, latValsFilteredList, latlon = True, s = 50, c = 'red', marker = 'X', alpha = 1)
