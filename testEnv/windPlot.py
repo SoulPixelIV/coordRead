@@ -113,39 +113,27 @@ def plotting():
         m.fillcontinents(color='coral', lake_color='aqua')
 
         #Draw wind map
-        ds = xr.open_dataset(/home/b/b382525/'wind_2015-2016.nc') #path to .nc file on levante
-        ds.wind.isel(time=0).plot()
-
-######################### Experiments ##########################
-        #print(ds.wind[0].strftime("%Y"))
-        #print(pd.to_datetime("2015-01-01 12:00:00"))
-        #ds.wind.sel(time=pd.to_datetime("2015-01-01 12:00:00"), method="nearest").plot()
-#######################################################################
+        ds = xr.open_dataset('wind_2015-2016.nc') #path to .nc file on levante
+        #ds.wind.sel(time="2015-02-01T18:00:00").plot()
 
         windData = ds.variables['wind'][:]
         windLats = ds.variables['lat'][:]
         windLons = ds.variables['lon'][:]
-        windTimes = ds.variables['time'][:]      
-
-######################### Experiments ##########################
-        #trtime = "2015-01-01 00:00:00"
-        #print(windTimes.isel(time=0).strftime('%Y-%m-%d'))
-        #print(windTimes.sel(time=))
-#######################################################################
+        windTimes = ds.variables['time'][:]
 
 ########################## OLD PLOT CODE ###################################
 ##################### Enable to show random wind map on earth ##############
-        # correcting and sorting lon values for correct plotting
-        #windLonsLength = len(windLons)
-        #for x in range(windLonsLength):
-            #windLons.values[x] = (windLons.values[x] + 180) % 360 - 180
+         #correcting and sorting lon values for correct plotting
+        windLonsLength = len(windLons)
+        for x in range(windLonsLength):
+            windLons.values[x] = (windLons.values[x] + 180) % 360 - 180
         
-        #windLons.values.sort()
+        windLons.values.sort()
 
-        #lon, lat = np.meshgrid(windLons, windLats)
-        #windX, windY = m(lon, lat)
-        #c_scheme = m.pcolor(windX, windY, np.squeeze(windData[currMarkerPoint, :, :]), cmap = 'jet')
-        #cbar = m.colorbar(c_scheme, location = 'right', pad = '10%')
+        lon, lat = np.meshgrid(windLons, windLats)
+        windX, windY = m(lon, lat)
+        c_scheme = m.pcolor(windX, windY, np.squeeze(ds.wind.sel(time="2015-02-01T12:00:00")), cmap = 'jet')
+        cbar = m.colorbar(c_scheme, location = 'right', pad = '10%')
 ############################################################################
 
         # plotting the map
