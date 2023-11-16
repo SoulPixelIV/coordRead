@@ -134,9 +134,11 @@ def plotting():
         
         windLons.values.sort()
 
+        # plotting the wind map
         lon, lat = np.meshgrid(windLons, windLats)
         windX, windY = m(lon, lat)
 
+        # transforming specific date to useable time for sel function
         currDate = dateValsTrimmed[currMarkerPoint]
         currDateTweaked = currDate[:4] + "-" + currDate[4:6] + "-" + currDate[6:8] + "T" + currDate[8:10] + ":00:00"
 
@@ -150,7 +152,7 @@ def plotting():
         x, y = m(correctedLonValsFilteredList, latValsFilteredList)
         m.plot(x, y, '-', color = 'red', markersize = 5, linewidth = 1.5)
 
-        plt.annotate('Event: ' + testEvent + '   ' + 'Marker Lon: ' + str(correctedLonValsFilteredList[currMarkerPoint]) + ' ' + 'Marker Lat: ' + str(latValsFilteredList[currMarkerPoint]), xy=(0, 1), xycoords='axes fraction')
+        plt.annotate('Event: ' + testEvent + '   ' + 'Marker Lon: ' + str(round(correctedLonValsFilteredList[currMarkerPoint], 2)) + ' ' + 'Marker Lat: ' + str(latValsFilteredList[currMarkerPoint]), xy=(0, 1), xycoords='axes fraction')
 
         selectedPlot[0] = correctedLonValsFilteredList[currMarkerPoint]
         selectedPlot[1] = latValsFilteredList[currMarkerPoint]
