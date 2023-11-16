@@ -6,7 +6,6 @@ import time
 import random
 import numpy as np
 import xarray as xr
-import pandas as pd
 import netCDF4 as nc
 from datetime import datetime
 
@@ -17,6 +16,7 @@ currEventSpace = 0
 selectedPlot = [0, 0]
 lonVals = [0] * 100
 latVals = [0] * 100
+dateVals = [0] * 100
 miniTestCounter = 0
 
 #Open File
@@ -54,14 +54,13 @@ filteredText = list(filteredTextTemp)
 #Get Lon,Lat from specific Event
 for i in range(len(filteredText)):
     if filteredText[i] == "Event:":
-        if filteredText[i+1] == testEvent:
-            currEventSpace = i+1
-            eventLength = int(filteredText[i+5])
+        if filteredText[i+1] == testEvent: #Found Correct Event
+            currEventSpace = i+1 #Holds current place of event number
+            eventLength = int(filteredText[i+5]) #Number of plot points in event
             break
     if i == len(filteredText) - 1:
         print("Event Nummer wurde nicht gefunden.")
-        quit()
-    
+        quit()  
 
 tickIndex = currEventSpace + 15
 if filteredText[currEventSpace] == testEvent:
@@ -69,6 +68,14 @@ if filteredText[currEventSpace] == testEvent:
         lonVals[x] = filteredText[tickIndex]
         latVals[x] = filteredText[tickIndex+1]
         tickIndex += 17
+
+#Get dates from specific Event
+tickIndex2 = currEventSpace + 11
+if filteredText[currEventSpace] == testEvent:
+    for x in range(eventLength):
+        dateVals[x] = filteredText[tickIndex2]
+        tickIndex2 += 17
+dateValsTrimmed = np.trim_zeros(dateVals)
 
 #Filter empty array elements
 lonValsFiltered = filter(removeZero, lonVals)
@@ -113,17 +120,14 @@ def plotting():
         m.fillcontinents(color='coral', lake_color='aqua')
 
         #Draw wind map
-        ds = xr.open_dataset('wind_2015-2016.nc') #path to .nc file on levante
-        #ds.wind.sel(time="2015-02-01T18:00:00").plot()
+        ds = xr.open_dataset('wind_2015-2016.nc') #path to .nc file
 
         windData = ds.variables['wind'][:]
         windLats = ds.variables['lat'][:]
         windLons = ds.variables['lon'][:]
         windTimes = ds.variables['time'][:]
 
-########################## OLD PLOT CODE ###################################
-##################### Enable to show random wind map on earth ##############
-         #correcting and sorting lon values for correct plotting
+        #correcting and sorting lon values for correct plotting
         windLonsLength = len(windLons)
         for x in range(windLonsLength):
             windLons.values[x] = (windLons.values[x] + 180) % 360 - 180
@@ -132,9 +136,12 @@ def plotting():
 
         lon, lat = np.meshgrid(windLons, windLats)
         windX, windY = m(lon, lat)
-        c_scheme = m.pcolor(windX, windY, np.squeeze(ds.wind.sel(time="2015-02-01T12:00:00")), cmap = 'jet')
+
+        currDate = dateValsTrimmed[currMarkerPoint]
+        currDateTweaked = currDate[:4] + "-" + currDate[4:6] + "-" + currDate[6:8] + "T" + currDate[8:10] + ":00:00"
+
+        c_scheme = m.pcolor(windX, windY, np.squeeze(ds.wind.sel(time=currDateTweaked)), cmap = 'jet')
         cbar = m.colorbar(c_scheme, location = 'right', pad = '10%')
-############################################################################
 
         # plotting the map
         m.scatter(lonValsFilteredList, latValsFilteredList, latlon = True, s = 50, c = 'red', marker = 'X', alpha = 1)

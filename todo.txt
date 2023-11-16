@@ -5,22 +5,7 @@ levante.dkrz.de
 -------------------------------------------------------------------------------------------
 
 JENS:
-	zeitschritte korrekt mit windkarte anzeigen
 
-	ds.wind.isel(time=0) selektiert einzelne werte (Funktion isel)
-	ds.wind.isel(time=0).plot() plot funktion
-
-	eventnummer ist zeitstempel für gewisses windfeld
-	sel funktion um nach bestimmten namen zu suchen
-	
-	time -> 2015-01-01 00:00:00
-	
-	2015100100 YYYYMMDDHR
-	nummer einlesen und zerlegen
-	dann in object umwandeln
-	mit sel searchen
-
-	python datentyp datetime
 
 INGO:
 	notebook zu übung3 fertigstellen
